@@ -1,0 +1,29 @@
+@import helper._
+@(userNameForm: Form[UserName])(implicit messages: Messages, requestHeader: RequestHeader)
+<main role="main">
+
+    <section class="jumbotron text-center">
+        <div class="container">
+            @main("Add User Name") {
+                <h1>Add User Name</h1>
+            }
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="row">
+            <p>Please enter your name using the field below.</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            @helper.form(action = routes.AddUserNameController.post()) {
+                @CSRF.formField
+                @helper.inputText(userNameForm("name"))
+                <button type="submit" class="btn btn-primary">Submit</button>
+            }
+        </div>
+    </div>
+
+</main>
