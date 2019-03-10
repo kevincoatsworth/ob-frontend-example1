@@ -48,3 +48,28 @@ git pull
 git checkout step2-add-user-page
 git merge master
 ```
+
+## Adding a new page: Add User
+
+We have the homepage and about us page within our app, now we want to start building functionality that allows us to add a user.
+
+Within this branch there's a new controller - AddUserController, this has been implemented but there are no tests for it. In order to have confidence in our code so we can change it, we need to ensure all functionality is covered by tests.
+
+Open the test/AddUserControllerSpec.scala file and there are 3 tests listed similar to the HomeControllerSpec tests. You need to add these 3 tests to the AddUserControllerSpec and make sure they pass.
+
+As you update the tests you can run the spec on it's own using the following command in terminal:
+
+```
+sbt "test-only *AddUserControllerSpec"
+```
+
+Once the tests are passing, commit your work and raise a Pull Request.
+
+After the code has been reviewed and approved for merging you can merge it into master and checkout the next step. Run the following in your local terminal.
+
+```
+git checkout master
+git pull
+git checkout step3-add-user-content
+git merge master
+```
