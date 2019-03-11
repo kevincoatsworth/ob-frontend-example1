@@ -98,11 +98,13 @@ In order to get a feel for updating view files and testing content, the next ste
 * Please follow the link below to add a new user:
 * (insert the following href link) `<a id="add-user-link" href="/add-user/name">Add New User</a>`
 
-You'll need to:
+Please see below for some tips on how to add the above content.
 
 * Create a new spec file test/views/AddUserViewSpec.scala (refer to the HomeViewSpec to write the relevant tests)
 * Open app/views/add_user.scala.html and add the relevant content
 * Once you've added the content and the tests work, you can run the app from terminal and view the add-user page at http://localhost:9000/add-user
+
+**Note: Don't worry about implementing the controller for the `/add-user/name` page, we'll do that in the next branch.**
 
 Once the tests are passing, commit your work and raise a Pull Request.
 
