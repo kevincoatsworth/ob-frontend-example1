@@ -96,7 +96,7 @@ sbt "test-only *HomeViewSpec"
 In order to get a feel for updating view files and testing content, the next step is for you to add some content to the `add-user` page. Add the following content to the add user page:
 
 * Please follow the link below to add a new user:
-* (insert the following href link) <a id="add-user-link" href="/add-user/name">Add New User</a>
+* (insert the following href link) `<a id="add-user-link" href="/add-user/name">Add New User</a>`
 
 You'll need to:
 
