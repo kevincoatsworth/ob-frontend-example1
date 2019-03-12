@@ -1,11 +1,14 @@
 package views
 
+import forms.UserNameForm
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
-import org.scalatestplus.play.PlaySpec
+import play.api.test.FakeRequest
 import play.twirl.api.Html
 
-class AddUserNameViewSpec extends PlaySpec{
+class AddUserNameViewSpec extends ViewSpecHelper {
+
+  implicit val request = addToken(FakeRequest("GET", "/add-user/name"))
 
   class AddUserNamePageFixture {
 
@@ -13,7 +16,7 @@ class AddUserNameViewSpec extends PlaySpec{
 
     implicit lazy val doc: Document = Jsoup.parse(html)
 
-    def view: Html = views.html.add_user_name()
+    def view: Html = views.html.add_user_name(UserNameForm())
   }
 
   "Add user name page " should {
@@ -21,6 +24,7 @@ class AddUserNameViewSpec extends PlaySpec{
     "contain valid content" in new AddUserNamePageFixture {
       doc.html.contains("Add User Name") mustBe true
       doc.html.contains("Please enter your name using the field below.") mustBe true
+      doc.getElementById("name").attr("name") mustBe "name"
     }
 
   }
