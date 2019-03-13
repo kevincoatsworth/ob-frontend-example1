@@ -41,5 +41,7 @@ class AddUserNameControllerSpec extends PlaySpec with OneAppPerSuite {
       status(home) mustBe OK
       contentType(home) mustBe Some("text/html")
     }
+
+    //TODO: Add post tests here
   }
 }

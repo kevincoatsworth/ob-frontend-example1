@@ -116,3 +116,45 @@ git pull
 git checkout step4-add-user-telephone
 git merge master
 ```
+
+## Adding form fields: Submitting user telephone details
+
+Now you've got a feel for adding pages and content we can start creating the journey that allows the user submit details using form fields.
+
+Your task at this stage is to add a page which allows users to submit their telephone number. On this branch you'll find the following files that make up the `Add User Name` page, these files should help you create the new `Add User Telephone` page.
+
+* test/forms/UserNameFormSpec
+* test/views/AddUserNameViewSpec
+* test/controllers/AddUserNameControllerSpec
+* app/views/add_user_name.scala.html
+* app/controllers/AddUserNameController
+* app/forms/UserNameForm
+* app/models/UserName
+
+The 7 files above include tests and implementation for the `Add User Name` page. Go ahead and run the app.
+
+```
+sbt run
+```
+
+Once running visit http://localhost:9000/add-user/name in your browser and you'll see the new page.
+
+Referring to the files above have a go at implementing the new `Add User Telephone Number` page. Below are some pointers to keep in mind:
+
+* Start with your tests and as previously done
+    * Add a controller test and implementation (don't worry about adding the form to the controller yet!)
+    * Add a view test and implement the new view (keep the content consistent with the Add User Name page
+    * Don't forget the new route!
+* When you have a new page, add the new UserTelephone model
+    * Refer to the UserName model already created for your new model
+    * The type should be an Int and not a String
+* Add a UserTelephoneFormSpec and it's implementation
+    * The UserTelephoneFormSpec allows you to test the form validation within a unit test
+    * The UserTelephoneForm implementation you create allows you to specify form validation
+    * Experiment with `nonEmptyText` and `number` for the validation. Which do you think you should use?
+* Once you have your form implementation you need to
+    * Add the post method to your controller
+    * Pass through your form as an argument to your view
+    * Update the view to include the form field (remember to include `@CSRF.formField`)
+
+.....
