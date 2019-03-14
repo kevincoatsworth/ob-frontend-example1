@@ -139,22 +139,18 @@ sbt run
 
 Once running visit http://localhost:9000/add-user/name in your browser and you'll see the new page.
 
-Referring to the files above have a go at implementing the new `Add User Telephone Number` page. Below are some pointers to keep in mind:
+The next page to add is the `Add User Telephone Number`. Within this branch are the specs to test the functionality, the implementation is missing through (if you run sbt test you'll see lots of red!)
 
-* Start with your tests and as previously done
-    * Add a controller test and implementation (don't worry about adding the form to the controller yet!)
-    * Add a view test and implement the new view (keep the content consistent with the Add User Name page
-    * Don't forget the new route!
-* When you have a new page, add the new UserTelephone model
-    * Refer to the UserName model already created for your new model
-    * The type should be an Int and not a String
-* Add a UserTelephoneFormSpec and it's implementation
-    * The UserTelephoneFormSpec allows you to test the form validation within a unit test
-    * The UserTelephoneForm implementation you create allows you to specify form validation
-    * Experiment with `nonEmptyText` and `number` for the validation. Which do you think you should use?
-* Once you have your form implementation you need to
-    * Add the post method to your controller
-    * Pass through your form as an argument to your view
-    * Update the view to include the form field (remember to include `@CSRF.formField`)
+Use the implementation for the `Add User Name` page to refer to, and add the code to create the page and get the tests passing:
+
+* The tests for the new page are in there but broken, we need to change that
+* Start by implementing the get method within the AddUserTelephoneController
+    * Refer to the AddUserNameController already created, as you implement the get method you'll have to start building out the form and model
+* When you implement the UserTelephone and UserTelephoneForm models keep in mind
+    * The type on the model can be an Int or a String, choose whatever you think fits
+    * Experiment with `nonEmptyText` and `number` for the validation. Which do you think you should use for accepting a users telephone number?
+* When you have the get method working on the controller, implement the post method
+    * On a successful post submission return an Ok response with text of `form submitted!!!`
+    * If the post request fails a BadRequest should be returned with the relevant form error
 
 .....

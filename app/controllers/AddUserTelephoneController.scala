@@ -7,4 +7,6 @@ import play.api.mvc.{Action, AnyContent, Controller}
 class AddUserTelephoneController @Inject()(override val messagesApi: MessagesApi) extends Controller with I18nSupport {
 
   def get(): Action[AnyContent] = ???
+
+  def post(): Action[AnyContent] = ???
 }

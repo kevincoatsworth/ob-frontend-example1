@@ -19,7 +19,7 @@ class AddUserNameController @Inject()(override val messagesApi: MessagesApi) ext
         BadRequest(views.html.add_user_name(formWithErrors))
       },
       _ => {
-        Ok("form submitted!!!")
+        Ok("form submitted!!!").as("text/html")
       }
     )
   }
