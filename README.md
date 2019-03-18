@@ -175,4 +175,27 @@ The `Add User Email` page requires the opposite of what you did on the last bran
 
 *Note: In a real scenario if you're following TDD you should never have an implementation missing without tests to cover the functionality.*
 
+If you run the app and visit http://localhost:9000/add-user/email in your browser, you should be able to test the form works and submit an email. Try this now.
+
+When your happy the implementation is working, you need to add the tests. Refer to the previous form pages and add the test code for the following files:
+
+* test/controllers/AddUserEmailControllerSpec.scala
+* test/forms/UserEmailFormSpec.scala
+* test/views/AddUserEmailViewSpec.scala
+
+*Remember to run sbt "test-only *[FILENAME] as you're working to check the tests are passing"
+
+As mentioned above, you'd never have an implementation before your tests, we're just trying to get you used to where specific tests should live and how they are written.
+
+Once the tests are passing, commit your work and raise a Pull Request.
+
+After the code has been reviewed and approved for merging you can merge it into master and checkout the next step. Run the following in your local terminal.
+
+```
+git checkout master
+git pull
+git checkout step6-confirmation-page
+git merge master
+```
+
 
