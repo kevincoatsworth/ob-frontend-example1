@@ -166,3 +166,13 @@ git pull
 git checkout step5-add-user-email
 git merge master
 ```
+
+## Adding form fields: Submitting user email
+
+You should now have 2 pages that allow users to add their name and telephone number. The final form page to add for the add user journey is a page to allow them to add their email address (don't worry about the pages not being linked up, we'll do that in a futures step, for now we're just concentrating on adding the pages.
+
+The `Add User Email` page requires the opposite of what you did on the last branch, the implementation exists but there's no tests.
+
+*Note: In a real scenario if you're following TDD you should never have an implementation missing without tests to cover the functionality.*
+
+
