@@ -73,3 +73,46 @@ git pull
 git checkout step3-add-user-content
 git merge master
 ```
+## Adding content: Add User Content
+
+The pages we've been adding are pretty meaningless at the moment. Without content they don't really provide anything to the user, we'll start to change this by adding content. You'll also get to run the app and see what you've built so far.
+
+We've added some content to the home page, in order to view it run the following command form terminal to run the app.
+
+```
+sbt run
+```
+
+The above command will start the service and if you navigate to http://localhost:9000 in your browser you should see the home page.
+
+After viewing the app in your browser, stop it (ctrl+c) in terminal and you should be able to run the spec that tests this content:
+
+```
+sbt "test-only *HomeViewSpec"
+```
+
+**Note: With regards to testing content, some people think there's value in it and some don't. We've included tests for content in this app so you have a better understanding of how to test view files.**
+
+In order to get a feel for updating view files and testing content, the next step is for you to add some content to the `add-user` page. Add the following content to the add user page:
+
+* Please follow the link below to add a new user:
+* (insert the following href link) `<a id="add-user-link" href="/add-user/name">Add New User</a>`
+
+Please see below for some tips on how to add the above content.
+
+* Create a new spec file test/views/AddUserViewSpec.scala (refer to the HomeViewSpec to write the relevant tests)
+* Open app/views/add_user.scala.html and add the relevant content
+* Once you've added the content and the tests work, you can run the app from terminal and view the add-user page at http://localhost:9000/add-user
+
+**Note: Don't worry about implementing the controller for the `/add-user/name` page, we'll do that in the next branch.**
+
+Once the tests are passing, commit your work and raise a Pull Request.
+
+After the code has been reviewed and approved for merging you can merge it into master and checkout the next step. Run the following in your local terminal.
+
+```
+git checkout master
+git pull
+git checkout step4-add-user-telephone
+git merge master
+```

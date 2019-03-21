@@ -9,6 +9,7 @@ scalaVersion := "2.11.12"
 
 libraryDependencies += filters
 libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "2.0.1" % Test
+libraryDependencies += "org.jsoup" % "jsoup" % "1.8.3" % Test
 
 // Adds additional packages into Twirl
 //TwirlKeys.templateImports += "com.example.controllers._"
