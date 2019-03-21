@@ -12,3 +12,5 @@ POST    /add-user/name              @controllers.AddUserNameController.post
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+
+GET     /about-us                   controllers.AboutUsController.index
