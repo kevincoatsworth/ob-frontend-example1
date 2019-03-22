@@ -198,4 +198,10 @@ git checkout step6-confirmation-page
 git merge master
 ```
 
+## Confirmation page: Adding a confirmation page
+
+Now we have all the pages needed to create a user, we need to display a confirmation page.
+
+
+
 

@@ -50,7 +50,7 @@ class AddUserNameControllerSpec extends PlaySpec with OneAppPerSuite {
 
     "POST is called" should {
 
-      "accept a post successful post request and return 200" in {
+      "accept a successful post request and return 200" in {
         val controller = new AddUserNameController(messagesApi)
         val csrfAddToken = app.injector.instanceOf[play.filters.csrf.CSRFAddToken]
         val action = csrfAddToken(controller.post())
@@ -59,12 +59,13 @@ class AddUserNameControllerSpec extends PlaySpec with OneAppPerSuite {
         contentType(request) mustBe Some("text/html")
       }
 
-      "accept a post successful post request and save to session" in {
+      "accept a successful post request and save data to session" in {
         val controller = new AddUserNameController(messagesApi)
         val csrfAddToken = app.injector.instanceOf[play.filters.csrf.CSRFAddToken]
         val action = csrfAddToken(controller.post())
         val request = action(FakeRequest().withJsonBody(Json.obj("name" -> "test")))
-        session(request) mustBe Session(Map("name"->"test"))
+        status(request) mustBe 200
+        session(request).data("name") mustBe "test"
       }
 
       "accept a post request and return 400 if data is invalid" in {
