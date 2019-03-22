@@ -1,6 +1,6 @@
 package forms
 
-import models.UserName
+import models.{UserName, UserTelephone}
 import org.scalatestplus.play.PlaySpec
 
 class UserTelephoneFormSpec extends PlaySpec {
@@ -14,7 +14,7 @@ class UserTelephoneFormSpec extends PlaySpec {
         )
       )
 
-      form.get mustBe UserName("user telephone")
+      form.get mustBe UserTelephone(123456)
     }
 
     "fail to bind when data is invalid" in {

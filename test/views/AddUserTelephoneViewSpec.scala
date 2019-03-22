@@ -23,7 +23,7 @@ class AddUserTelephoneViewSpec extends ViewSpecHelper {
     "contain valid content" in new AddUserTelephonePageFixture {
       doc.html.contains("Add User Telephone") mustBe true
       doc.html.contains("Please enter your telephone number using the field below.") mustBe true
-      doc.getElementById("telephone").attr("telephone") mustBe "telephone"
+      doc.getElementById("telephone").attr("name") mustBe "telephone"
     }
 
   }
