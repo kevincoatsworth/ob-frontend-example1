@@ -116,3 +116,53 @@ git pull
 git checkout step4-add-user-telephone
 git merge master
 ```
+
+## Adding form fields: Submitting user telephone details
+
+Now you've got a feel for adding pages and content we can start creating the journey that allows the user to submit their details using forms.
+
+Your task within this branch is to add a page which allows users to submit their telephone number. The branch contains the following files that make up the `Add User Name` page, these files should help you create the new `Add User Telephone` page.
+
+* test/forms/UserNameFormSpec
+* test/views/AddUserNameViewSpec
+* test/controllers/AddUserNameControllerSpec
+* app/views/add_user_name.scala.html
+* app/controllers/AddUserNameController
+* app/forms/UserNameForm
+* app/models/UserName
+
+The 7 files above include tests and implementation for the `Add User Name` page. Go ahead and run the app.
+
+```
+sbt run
+```
+
+Once running visit http://localhost:9000/add-user/name in your browser and you'll see the new page. Try submitting it with and without values to see what you get.
+
+The page you need to add is the `Add User Telephone Number`. The specs for this new page exist but the implementation is missing (if you run sbt test you'll see lots of red!)
+
+Use the implementation for the `Add User Name` page to refer to, and add the code to create the page and get the tests passing:
+
+* The tests for the new page are in there but broken, we need to change that
+* Start by implementing the get method within the AddUserTelephoneController
+    * Refer to the AddUserNameController already created, as you implement the get method you'll have to start building out the form and model
+* When you implement the UserTelephone and UserTelephoneForm models keep in mind
+    * The type on the model can be an Int or a String, choose whatever you think fits
+    * Experiment with `nonEmptyText` and `number` for the validation. Which do you think you should use for accepting a users telephone number?
+* The add_user_telephone.scala.html file exists but there's nothing in it
+    * Refer to the add_user_name.scala.html file to get an overview of how it should be implemented
+    * Remember you have to pass through an argument of UserTelephoneForm in order to display the form within the page
+* When you have the get method working on the controller, implement the post method
+    * On a successful post submission return an Ok response with text of `form submitted!!!`
+    * If the post request fails a BadRequest should be returned with the relevant form error
+
+Once the tests are passing, commit your work and raise a Pull Request.
+
+After the code has been reviewed and approved for merging you can merge it into master and checkout the next step. Run the following in your local terminal.
+
+```
+git checkout master
+git pull
+git checkout step5-add-user-email
+git merge master
+```
