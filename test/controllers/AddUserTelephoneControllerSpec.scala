@@ -67,7 +67,7 @@ class AddUserTelephoneControllerSpec extends PlaySpec with OneAppPerSuite {
         contentType(request) mustBe Some("text/html")
         contentAsString(request) must include("Numeric value expected")
       }
-      
+
     }
   }
 }

@@ -1,0 +1,24 @@
+@import models.UserDetails
+@(data: UserDetails)
+<main role="main">
+
+    <section class="jumbotron text-center">
+        <div class="container">
+            @main("Confirm User Details") {
+                <h1>Confirm User Details</h1>
+            }
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="row">
+            <p>Please confirm the user details below are correct before you submit the form.</p>
+        </div>
+        <div class="row">
+            <ul>
+                <li>Name: @data.name.value</li>
+            </ul>
+        </div>
+    </div>
+
+</main>
