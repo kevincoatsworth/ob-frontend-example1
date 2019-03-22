@@ -53,7 +53,7 @@ class AddUserTelephoneControllerSpec extends PlaySpec with OneAppPerSuite {
         val controller = new AddUserTelephoneController(messagesApi)
         val csrfAddToken = app.injector.instanceOf[play.filters.csrf.CSRFAddToken]
         val action = csrfAddToken(controller.post())
-        val request = action(FakeRequest().withJsonBody(Json.obj("telephone" -> "test")))
+        val request = action(FakeRequest().withJsonBody(Json.obj("telephone" -> "123456")))
         status(request) mustBe 200
         contentType(request) mustBe Some("text/html")
       }
@@ -65,7 +65,7 @@ class AddUserTelephoneControllerSpec extends PlaySpec with OneAppPerSuite {
         val request = action(FakeRequest().withJsonBody(Json.obj("telephone" -> "")))
         status(request) mustBe 400
         contentType(request) mustBe Some("text/html")
-        contentAsString(request) must include("This field is required")
+        contentAsString(request) must include("Numeric value expected")
       }
 
     }

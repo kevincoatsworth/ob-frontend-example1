@@ -19,7 +19,7 @@ class HomeViewSpec extends PlaySpec {
   "Home page" should {
 
     "contain valid content" in new HomePageFixture {
-      doc.html.contains("This website provides a simple example of a service built in Scala following a TTD approach.") mustBe true
+      doc.html.contains("This website provides a simple example of a service built in Scala following a TDD approach.") mustBe true
       doc.html.contains("You can view the source code on ") mustBe true
       doc.getElementById("git-link").attr("href") mustBe "https://github.com/chris-ianson/ob-frontend-example1"
       doc.html.contains("over on github.com") mustBe true
