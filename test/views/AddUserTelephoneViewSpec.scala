@@ -1,5 +1,6 @@
 package views
 
+import forms.UserTelephoneForm
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import play.api.test.FakeRequest
@@ -15,7 +16,7 @@ class AddUserTelephoneViewSpec extends ViewSpecHelper {
 
     implicit lazy val doc: Document = Jsoup.parse(html)
 
-    def view: Html = views.html.add_user_telephone()
+    def view: Html = views.html.add_user_telephone(UserTelephoneForm())
   }
 
   "Add user telephone page " should {

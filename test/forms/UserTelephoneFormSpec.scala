@@ -1,6 +1,7 @@
 package forms
 
-import models.{UserName, UserTelephone}
+import models.UserTelephone
+
 import org.scalatestplus.play.PlaySpec
 
 class UserTelephoneFormSpec extends PlaySpec {
@@ -10,7 +11,7 @@ class UserTelephoneFormSpec extends PlaySpec {
     "bind when all valid data is supplied" in {
       val form = UserTelephoneForm().bind(
         Map(
-          "telephone" -> 123456
+          "telephone" -> "123456"
         )
       )
 
@@ -23,7 +24,7 @@ class UserTelephoneFormSpec extends PlaySpec {
           "telephone" -> ""
         )
       )
-      form.errors.head.message mustBe "error.required"
+      form.errors.head.message mustBe "error.number"
     }
   }
 }

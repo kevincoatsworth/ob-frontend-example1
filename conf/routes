@@ -17,3 +17,8 @@ GET     /add-user/confirmation      @controllers.AddUserConfirmationController.g
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+
+GET     /about-us                   controllers.AboutUsController.index
+
+GET     /add-user/telephone         @controllers.AddUserTelephoneController.get
+POST    /add-user/telephone         @controllers.AddUserTelephoneController.post
