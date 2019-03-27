@@ -1,5 +1,6 @@
 package forms
 
+import models.UserEmail
 import org.scalatestplus.play.PlaySpec
 
 class UserEmailFormSpec extends PlaySpec {
@@ -12,6 +13,7 @@ class UserEmailFormSpec extends PlaySpec {
           "email" -> "bta4life@hmrc.gov.uk"
         )
       )
+      form.get mustBe UserEmail("bta4life@hmrc.gov.uk")
     }
 
     "fail to bind when no data is submitted" in {
