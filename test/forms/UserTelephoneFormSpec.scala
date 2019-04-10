@@ -15,7 +15,7 @@ class UserTelephoneFormSpec extends PlaySpec {
         )
       )
 
-      form.get mustBe UserTelephone(123456)
+      form.get mustBe UserTelephone("123456")
     }
 
     "fail to bind when data is invalid" in {
@@ -24,7 +24,7 @@ class UserTelephoneFormSpec extends PlaySpec {
           "telephone" -> ""
         )
       )
-      form.errors.head.message mustBe "error.number"
+      form.errors.head.message mustBe "error.required"
     }
   }
 }

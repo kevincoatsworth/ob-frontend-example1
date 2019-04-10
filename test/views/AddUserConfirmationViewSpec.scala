@@ -1,6 +1,6 @@
 package views
 
-import models.{UserDetails, UserName}
+import models.{UserDetails, UserName, UserTelephone, UserEmail}
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.scalatestplus.play.PlaySpec
@@ -14,7 +14,7 @@ class AddUserConfirmationViewSpec extends PlaySpec {
 
     implicit lazy val doc: Document = Jsoup.parse(html)
 
-    val userDetails = UserDetails(name = UserName("Tony"))
+    val userDetails = UserDetails(name = UserName("Tony"), telephone = UserTelephone("123456"), email = UserEmail("tony@bta4life.com"))
 
     def view: Html = views.html.add_user_confirmation(userDetails)
   }
@@ -25,6 +25,8 @@ class AddUserConfirmationViewSpec extends PlaySpec {
       doc.getElementsByTag("h1").first().text mustBe "Confirm User Details"
       doc.html.contains("Please confirm the user details below are correct before you submit the form.") mustBe true
       doc.html.contains("Name: Tony") mustBe true
+      doc.html.contains("Telephone: 123456") mustBe true
+      doc.html.contains("Email: tony@bta4life.com") mustBe true
     }
 
   }

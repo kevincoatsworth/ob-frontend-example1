@@ -31,6 +31,8 @@ class AddUserConfirmationControllerSpec extends PlaySpec with OneAppPerTest {
       status(request) mustBe OK
       contentType(request) mustBe Some("text/html")
       contentAsString(request) must include ("Name: not set")
+      contentAsString(request) must include ("Telephone: not set")
+      contentAsString(request) must include ("Email: not set")
     }
   }
 }

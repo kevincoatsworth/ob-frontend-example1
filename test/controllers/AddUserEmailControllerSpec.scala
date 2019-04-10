@@ -55,8 +55,19 @@ class AddUserEmailControllerSpec extends PlaySpec with OneAppPerSuite {
         val action = csrfAddToken(controller.post())
         val request = action(FakeRequest().withJsonBody(Json.obj("email" -> "bta4life@hmrc.gov.uk")))
 
-        status(request) mustBe 200
-        contentType(request) mustBe Some("text/html")
+        status(request) mustBe 303
+        redirectLocation(request) mustBe Some("/add-user/confirmation")
+      }
+
+      "accept a successful post request and save data to session" in {
+        val controller = new AddUserEmailController(messagesApi)
+        val csrfAddToken = app.injector.instanceOf[play.filters.csrf.CSRFAddToken]
+        val action = csrfAddToken(controller.post())
+        val request = action(FakeRequest().withJsonBody(Json.obj("email" -> "bta4life@hmrc.gov.uk")))
+
+        status(request) mustBe 303
+        session(request).data("email") mustBe "bta4life@hmrc.gov.uk"
+        redirectLocation(request) mustBe Some("/add-user/confirmation")
       }
 
       "accept a post request and return 400 if data is invalid" in {
