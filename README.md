@@ -198,4 +198,69 @@ git checkout step6-confirmation-page
 git merge master
 ```
 
+## Confirmation page: Adding a confirmation page
 
+Now we have all the pages needed to create a user, we need to display a confirmation page. To do this we need some way to persist the submitted data across pages, we'll do this using sessions.
+
+The AddUserNameController post method has been updated to add on session data to the submitted request. Have a look at this file and the AddUserNameControllerSpec to work out what the test looks like.
+
+Once you understand the additional session data in these two files, implement the same session functionality:
+
+* Add additional tests to check the session data in the following files 
+    * test/controllers/AddUserEmailControllerSpec.scala
+    * test/controllers/AddUserTelephoneControllerSpec.scala
+* Once you have the tests update the implementation to get them passing - refer to AddUserNameController to help you
+
+
+When all 3 form pages are saving the data to session on submission you're ready to finish the confirmation page.
+
+Run the app and visit the following url `http://localhost:9000/add-user/confirmation` and you should see the confirmation page. This is the page users will see so they can confirm their data is correct before submitting it.
+
+The confirmation page contains some content along with list that at the moment only contains `Name`
+
+Note: If you've booted up the app and haven't submitted the name form the value will be `not set`. If you go to the name page and submit a name then come back to the confirmation page it should show the name you submitted.
+
+* Add the users Telephone and email data to the confirmation page
+    * You'll have to update app/models/UserDetails to have two additional arguments for the telephone and email
+    * The app/controllers/AddUserConfirmationController needs updating so you can extract the session data and populate UserDetails
+    * app/views/add_user_confirmation needs to include the additional data
+* Remember to TDD the functionality
+    * AddUserConfirmationViewSpec will need updating to include the extra content
+    * Update AddUserConfirmationControllerSpec so it tests for when a session value doesn't exist (check the last test)
+
+####One last thing....routes
+
+One thing we haven't done yet is link the pages together to create the user journey. Until now we've been writing the tests, adding the code to get the tests passing and then viewing each page individually in the browser.
+
+We need to link the form submissions up so the user is automatically sent down the correct journey to the final confirmation page.
+
+On the `step3-add-user-content` branch you added a link to the Add New User page. From this page, when a successful submission is made you should redirect the user to the `Add User Telephone Number` page.
+
+Below is an example of what a redirect looks like.
+
+```
+Example: Redirect(routes.AddUserTelephoneController.get())
+```
+
+* Add redirects to `AddUserNameController` `AddUserTelephoneController` and `AddUserTelephoneController` (use the example above)
+* Remember to keep the `withSession` method so the submitted data is stored to the session
+* All controller POST tests will need updating so the status code is a redirect (303)
+
+Along with updating the status code you should also add additional tests to check each redirect location is correct. See below for an example of this. 
+
+```
+redirectLocation(result) mustBe Some([ENTER REDIRECT LOCATION HERE])
+```
+
+There's a lot of work in this branch but it's hopefully starting to make some sense.
+
+Once you've added the functionality and the tests are passing, commit your work and raise a Pull Request.
+
+After the code has been reviewed and approved for merging you can merge it into master and checkout the next step. Run the following in your local terminal.
+
+```
+git checkout master
+git pull
+git checkout step7-submit-to-backend
+git merge master
+```

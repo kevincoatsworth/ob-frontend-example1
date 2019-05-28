@@ -8,7 +8,7 @@ object UserTelephoneForm {
   def apply(): Form[UserTelephone] = {
     Form(
       mapping(
-        "telephone" -> number)
+        "telephone" -> nonEmptyText)
         (UserTelephone.apply)(UserTelephone.unapply))
   }
 }

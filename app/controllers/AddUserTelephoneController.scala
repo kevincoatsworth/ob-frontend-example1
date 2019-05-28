@@ -18,8 +18,10 @@ class AddUserTelephoneController @Inject()(override val messagesApi: MessagesApi
       formWithErrors => {
         BadRequest(views.html.add_user_telephone(formWithErrors))
       },
-      _ => {
-        Ok("form submitted!!!").as("text/html")
+      data => {
+        Redirect(routes.AddUserEmailController.get()).withSession(
+          request.session + ("telephone" -> data.value)
+        )
       }
     )
   }

@@ -49,13 +49,24 @@ class AddUserTelephoneControllerSpec extends PlaySpec with OneAppPerSuite {
 
     "POST is called" should {
 
-      "accept a post request and return no products" in {
+      "accept a post request and return 303" in {
         val controller = new AddUserTelephoneController(messagesApi)
         val csrfAddToken = app.injector.instanceOf[play.filters.csrf.CSRFAddToken]
         val action = csrfAddToken(controller.post())
         val request = action(FakeRequest().withJsonBody(Json.obj("telephone" -> "123456")))
-        status(request) mustBe 200
-        contentType(request) mustBe Some("text/html")
+        status(request) mustBe 303
+        redirectLocation(request) mustBe Some("/add-user/email")
+      }
+
+      "accept a post request and save data to session" in {
+        val controller = new AddUserTelephoneController(messagesApi)
+        val csrfAddToken = app.injector.instanceOf[play.filters.csrf.CSRFAddToken]
+        val action = csrfAddToken(controller.post())
+        val request = action(FakeRequest().withJsonBody(Json.obj("telephone" -> "123456")))
+
+        status(request) mustBe 303
+        session(request).data("telephone") mustBe "123456"
+        redirectLocation(request) mustBe Some("/add-user/email")
       }
 
       "accept a post request and return 400 if data is invalid" in {
@@ -65,9 +76,8 @@ class AddUserTelephoneControllerSpec extends PlaySpec with OneAppPerSuite {
         val request = action(FakeRequest().withJsonBody(Json.obj("telephone" -> "")))
         status(request) mustBe 400
         contentType(request) mustBe Some("text/html")
-        contentAsString(request) must include("Numeric value expected")
+        contentAsString(request) must include("This field is required")
       }
-
     }
   }
 }

@@ -18,8 +18,10 @@ class AddUserEmailController @Inject()(override val messagesApi: MessagesApi) ex
       formWithErrors => {
         BadRequest(views.html.add_user_email(formWithErrors))
       },
-      _ => {
-        Ok("form submitted!!!").as("text/html")
+      data => {
+        Redirect(routes.AddUserConfirmationController.get()).withSession(
+          request.session + ("email" -> data.value)
+        )
       }
     )
   }

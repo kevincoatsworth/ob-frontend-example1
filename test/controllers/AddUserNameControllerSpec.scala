@@ -4,6 +4,7 @@ import org.scalatestplus.play.{OneAppPerSuite, PlaySpec}
 import play.api.i18n.MessagesApi
 import play.api.inject.Injector
 import play.api.libs.json.Json
+import play.api.mvc.Session
 import play.api.test.FakeRequest
 import play.api.test.Helpers._
 
@@ -49,13 +50,23 @@ class AddUserNameControllerSpec extends PlaySpec with OneAppPerSuite {
 
     "POST is called" should {
 
-      "accept a post request and return no products" in {
+      "accept a successful post request and return 200" in {
         val controller = new AddUserNameController(messagesApi)
         val csrfAddToken = app.injector.instanceOf[play.filters.csrf.CSRFAddToken]
         val action = csrfAddToken(controller.post())
         val request = action(FakeRequest().withJsonBody(Json.obj("name" -> "test")))
-        status(request) mustBe 200
-        contentType(request) mustBe Some("text/html")
+        status(request) mustBe 303
+        redirectLocation(request) mustBe Some("/add-user/telephone")
+      }
+
+      "accept a successful post request and save data to session" in {
+        val controller = new AddUserNameController(messagesApi)
+        val csrfAddToken = app.injector.instanceOf[play.filters.csrf.CSRFAddToken]
+        val action = csrfAddToken(controller.post())
+        val request = action(FakeRequest().withJsonBody(Json.obj("name" -> "test")))
+        status(request) mustBe 303
+        session(request).data("name") mustBe "test"
+        redirectLocation(request) mustBe Some("/add-user/telephone")
       }
 
       "accept a post request and return 400 if data is invalid" in {

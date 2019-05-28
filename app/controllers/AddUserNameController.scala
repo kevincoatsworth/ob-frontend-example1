@@ -18,8 +18,10 @@ class AddUserNameController @Inject()(override val messagesApi: MessagesApi) ext
       formWithErrors => {
         BadRequest(views.html.add_user_name(formWithErrors))
       },
-      _ => {
-        Ok("form submitted!!!").as("text/html")
+      data => {
+        Redirect(routes.AddUserTelephoneController.get()).withSession(
+          request.session + ("name" -> data.value)
+        )
       }
     )
   }
