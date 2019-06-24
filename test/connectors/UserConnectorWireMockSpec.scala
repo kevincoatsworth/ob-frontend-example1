@@ -40,7 +40,9 @@ class UserConnectorWireMockSpec extends PlaySpec with MockitoSugar with ScalaFut
 
       val result = connector.post(user)
 
-      whenReady(result) (_ mustBe SuccessfulSubmission)
+      whenReady(result) {
+        response => response mustBe SuccessfulSubmission
+      }
     }
 
     "return FailedSubmission when post is unsuccessful" in {
@@ -54,8 +56,9 @@ class UserConnectorWireMockSpec extends PlaySpec with MockitoSugar with ScalaFut
 
       val result = connector.post(user)
 
-      whenReady(result) (_ mustBe FailedSubmission)
-
+      whenReady(result) {
+        response => response mustBe FailedSubmission
+      }
     }
 
   }
