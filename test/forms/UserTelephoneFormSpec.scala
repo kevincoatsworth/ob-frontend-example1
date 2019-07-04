@@ -1,7 +1,6 @@
 package forms
 
-import models.UserTelephone
-
+import models.{UserName, UserTelephone}
 import org.scalatestplus.play.PlaySpec
 
 class UserTelephoneFormSpec extends PlaySpec {

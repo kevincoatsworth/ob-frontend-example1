@@ -5,7 +5,7 @@
     <section class="jumbotron text-center">
         <div class="container">
             @main("Add User Telephone") {
-                <h1>Add User Telephone</h1>
+            <h1>Add User Telephone</h1>
             }
         </div>
     </section>
@@ -20,8 +20,8 @@
         <div class="row">
             @helper.form(action = routes.AddUserTelephoneController.post()) {
                 @CSRF.formField
-                @helper.inputText(userTelephoneForm("telephone"))
-                <button type="submit" class="btn btn-primary">Submit</button>
+            @helper.inputText(userTelephoneForm("telephone"))
+            <button type="submit" class="btn btn-primary">Submit</button>
             }
         </div>
     </div>

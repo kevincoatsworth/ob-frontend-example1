@@ -53,6 +53,6 @@ class UserEmailFormSpec extends PlaySpec {
       form.errors.head.message mustBe "error.email"
     }
 
-    //TODO: If you can think of any more test scenarios, add them here...
   }
+
 }
