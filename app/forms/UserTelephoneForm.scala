@@ -9,6 +9,6 @@ object UserTelephoneForm {
     Form(
       mapping(
         "telephone" -> nonEmptyText)
-      (UserTelephone.apply)(UserTelephone.unapply))
+        (UserTelephone.apply)(UserTelephone.unapply))
   }
 }

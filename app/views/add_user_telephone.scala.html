@@ -19,7 +19,7 @@
     <div class="container">
         <div class="row">
             @helper.form(action = routes.AddUserTelephoneController.post()) {
-            @CSRF.formField
+                @CSRF.formField
             @helper.inputText(userTelephoneForm("telephone"))
             <button type="submit" class="btn btn-primary">Submit</button>
             }

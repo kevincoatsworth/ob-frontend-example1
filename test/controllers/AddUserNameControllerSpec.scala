@@ -4,6 +4,7 @@ import org.scalatestplus.play.{OneAppPerSuite, PlaySpec}
 import play.api.i18n.MessagesApi
 import play.api.inject.Injector
 import play.api.libs.json.Json
+import play.api.mvc.Session
 import play.api.test.FakeRequest
 import play.api.test.Helpers._
 
@@ -81,5 +82,4 @@ class AddUserNameControllerSpec extends PlaySpec with OneAppPerSuite {
     }
 
   }
-
 }

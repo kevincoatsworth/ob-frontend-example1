@@ -25,7 +25,5 @@ class UserTelephoneFormSpec extends PlaySpec {
       )
       form.errors.head.message mustBe "error.required"
     }
-
   }
-
 }

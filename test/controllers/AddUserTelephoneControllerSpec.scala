@@ -13,7 +13,7 @@ class AddUserTelephoneControllerSpec extends PlaySpec with OneAppPerSuite {
 
   def messagesApi: MessagesApi = injector.instanceOf[MessagesApi]
 
-  "AddUserTelephone" when {
+  "AddUserNameController" when {
 
     "GET is called" should {
 

@@ -12,7 +12,6 @@ class AddUserControllerSpec extends PlaySpec with OneAppPerTest {
     * render the index page from the application
     * render the index page from the router
     */
-
   "AddUserController GET" should {
 
     "render the index page from a new instance of controller" in {
@@ -45,4 +44,5 @@ class AddUserControllerSpec extends PlaySpec with OneAppPerTest {
       contentAsString(home) must include ("Add User!")
     }
   }
+
 }

@@ -1,6 +1,6 @@
 package views
 
-import models.{UserDetails, UserEmail, UserName, UserTelephone}
+import models.{UserDetails, UserName, UserTelephone, UserEmail}
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.scalatestplus.play.PlaySpec

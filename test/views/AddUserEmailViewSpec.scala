@@ -28,5 +28,4 @@ class AddUserEmailViewSpec extends ViewSpecHelper {
     }
 
   }
-
 }

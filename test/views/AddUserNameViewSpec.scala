@@ -28,5 +28,4 @@ class AddUserNameViewSpec extends ViewSpecHelper {
     }
 
   }
-
 }
